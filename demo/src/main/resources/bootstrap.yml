@@ -1,0 +1,21 @@
+#spring:
+#  application:
+#    name: demo
+#  cloud:
+#    config:
+#     retry:
+#      multiplier: 2.5
+#      max-interval: 100000
+#     uri: http://configserver:8888
+#     fail-fast: true
+#     discovery:
+#      enabled: true
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://dicovery:1111/eureka/
+#      
+#logging:
+#  level:
+#    org.springframework.retry: DEBUG
