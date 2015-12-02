@@ -88,9 +88,9 @@ public class ComparadorApplication {
 
 			@Override
 			public void afterPropertiesSet() {
-				addPlano("Fale Mais 30", 30, 10);
-				addPlano("Fale Mais 60", 60, 10);
-				addPlano("Fale Mais 120", 120, 10);
+				addPlano("Fale Mais 30", 30, 1.10);
+				addPlano("Fale Mais 60", 60, 1.10);
+				addPlano("Fale Mais 120", 120, 1.10);
 			}
 
 			private void addPlano(String nome, int minutos, double minutoAdicional) {

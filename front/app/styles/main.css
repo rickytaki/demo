@@ -1,3 +1,23 @@
+.one{
+  padding: 20em 0 16em 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-attachment: fixed;
+  background-color: #1E2832;
+  color: rgba(255, 255, 255, 0.75);
+  background-image: url("./../images/overlay.png"), url("./../images/pic11.jpg");
+  background-size: cover;
+}
+
+.top{
+  background-attachment: fixed;
+  background-color: #1E2832;
+  color: rgba(255, 255, 255, 0.75);
+  background-image: url("./../images/overlay.png"), url("./../images/pic11.jpg");
+  background-size: cover;
+  padding: 5em 0 16em 0;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;

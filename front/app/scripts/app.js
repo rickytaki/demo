@@ -2,34 +2,56 @@
 
 /**
  * @ngdoc overview
- * @name frontApp
+ * @name demoApp
  * @description
- * # frontApp
+ * # demoApp
  *
  * Main module of the application.
  */
 angular
-  .module('frontApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+  .module('demoApp', [
+    'oc.lazyLoad',
+    'ui.router',
+    'ui.bootstrap',
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
+  .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider',function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+    
+    $ocLazyLoadProvider.config({
+      debug:false,
+      events:true,
+    });
+
+    $urlRouterProvider.otherwise('/main');
+
+    $stateProvider
+      .state('main', {
+        url:'/main',
+        templateUrl: '/views/main.html',
+        resolve: {
+          loadMyFiles: function($ocLazyLoad){
+            return $ocLazyLoad.load({
+              files:[
+              'scripts/factories/tarifaFactory.js',
+              'scripts/controllers/main.js',
+              'scripts/factories/planoFactory.js',
+              'scripts/factories/dddFactory.js'
+              ]
+            })
+          }
+        }
+      })
+      .state('comparativo', {
+        urL: '/comparativo',
+        templateUrl: '/views/comparativo.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        resolve: {
+          loadMyFiles: function($ocLazyLoad){
+            return $ocLazyLoad.load({
+              files:[
+                'bower_components/angular-chart.js/dist/angular-chart.min.js'
+              ]
+            })
+          }
+        }
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  }]);
